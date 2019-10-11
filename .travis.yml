@@ -1,0 +1,21 @@
+language: java
+sudo: false
+install: true
+
+addons:
+  sonarcloud:
+    organization: "codewinger-github"
+    token:
+      secure: "93c9016b0f6865a9bd3ee2acfb5ee18d2186e897"
+
+
+jdk:
+  - oraclejdk8
+
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
